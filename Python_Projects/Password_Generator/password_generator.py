@@ -26,4 +26,3 @@ if st.button("Generate Password"):
 
 st.write("--------------------------------")
 st.write("Build with ❤️ by [Farhan Rajput](https://github.com/mfsrajput)")
-

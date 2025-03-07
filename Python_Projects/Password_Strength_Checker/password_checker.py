@@ -52,4 +52,3 @@ if password:
     strength, color = check_password_strength(password)
     st.markdown(f'<div class="password-box"><p style="color: {color}; font-size: 18px; text-align: center; font-weight: bold;">{strength}</p></div>', unsafe_allow_html=True)
 
-
