@@ -1,7 +1,23 @@
 import re
+import random
+import string
 import streamlit as st
 
+def generate_strong_password():
+    characters = string.ascii_letters + string.digits + "!@#$%^&*()"
+    return ''.join(random.choice(characters) for _ in range(12))
+
+BLACKLISTED_PASSWORDS = {"password", "123456", "qwerty", "letmein", "password123", "admin", "welcome"}
+
 def check_password_strength(password):
+    if password in BLACKLISTED_PASSWORDS:
+        return (f"""🔴 Weak: This password is too common and easily guessed!<br>
+                ✅ Create a strong password by following these guidelines:<br>
+                ✅ Uppercase & lowercase letters<br>
+                ✅ Digits (0-9)<br>
+                ✅ Special characters (!@#$%^&*)<br>
+                🔒 A strong password keeps your data safe!""", "#FF4B4B")
+    
     messages = []
     if len(password) < 8:
         messages.append("🔴 Password must be at least 8 characters long")
@@ -51,4 +67,6 @@ password = st.text_input("Enter your password", type="password", key="password_i
 if password:
     strength, color = check_password_strength(password)
     st.markdown(f'<div class="password-box"><p style="color: {color}; font-size: 18px; text-align: center; font-weight: bold;">{strength}</p></div>', unsafe_allow_html=True)
-
+if st.button("🔄 Generate Strong Password"):
+    strong_password = generate_strong_password()
+    st.text_input("Suggested Password:", strong_password)
