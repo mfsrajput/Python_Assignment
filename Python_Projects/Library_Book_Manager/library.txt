@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Mr-Right",
+        "author": "Farhan",
+        "year": "2025",
+        "genre": "nothing",
+        "read": true
+    },
+    {
+        "title": "the legend of python",
+        "author": "farhan rajput",
+        "year": "2024",
+        "genre": "science",
+        "read": true
+    }
+]
